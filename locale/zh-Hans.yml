@@ -1,0 +1,18 @@
+nodeloc-exchange:
+  admin:
+    settings:
+      api_url: Api url
+      api_token: Api Token
+      exchange_rate: 汇率
+      query-others-history: 查看他人记录
+  forum:
+    nav: 能量转换
+    title: 能量转换积分
+    list-empty: 没有找到记录
+    input_help: 请输入需要兑换的积分
+    exchange_rate: 能量和积分的汇率为 {exchange_rate} :1，也就是每 {exchange_rate} 可以换 1 积分
+    money-list-load-more: 读取更多
+    create_exchange: 能量转换
+    record:
+      money-out: 能量支出
+      money-in: 积分增加

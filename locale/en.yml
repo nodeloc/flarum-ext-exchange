@@ -1,0 +1,18 @@
+nodeloc-exchange:
+  admin:
+    settings:
+      api_url: Api url
+      api_token: Api Token
+      exchange_rate: Rate
+      query-others-history: View Others' Records
+  forum:
+    nav: Exchange
+    title: mExchange
+    list-empty: record was not found
+    input_help: Please input the credits you want
+    exchange_rate: NL Credits {exchange_rate} :1，meaned {exchange_rate} NL exchange 1 credits
+    money-list-load-more: Read more
+    create_exchange: Exchange
+    record:
+      money-out: Cost
+      money-in: Credits
