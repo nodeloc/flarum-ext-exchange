@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6063d45b-45eb-4d49-ad56-e7ee146917ad" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/src/Policy/UserPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extend.php" beforeDir="false" afterPath="$PROJECT_DIR$/extend.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/dist/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/dist/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/dist/admin.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/js/dist/admin.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/dist/forum.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/dist/forum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/dist/forum.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/js/dist/forum.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/src/admin/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/js/src/admin/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/src/forum/components/CreateExchange.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/src/forum/components/CreateExchange.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/src/forum/components/ExchangeHistoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/src/forum/components/ExchangeHistoryList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/src/forum/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/js/src/forum/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/Controller/ListUserExchangeHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/Controller/ListUserExchangeHistoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ExchangeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ExchangeRepository.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;nodeloc&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="344d05bd-09b3-4869-b892-f2b7a2ef3c44" />
+        <option name="url" value="https://github.com/nodeloc/flarum-ext-exchange.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.2" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2ga4fAOlOUHpKqDQczPHuujD4Vh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/wwwroot/flarum/packages/flarum-ext-exchange&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\wwwroot\\flarum\\packages\\flarum-ext-exchange\\js\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6063d45b-45eb-4d49-ad56-e7ee146917ad" name="Changes" comment="" />
+      <created>1715922454893</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715922454893</updated>
+      <workItem from="1715922455934" duration="27677000" />
+      <workItem from="1715999926820" duration="6429000" />
+    </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1715967916822</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715967916822</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init">
+      <option name="closed" value="true" />
+      <created>1715968191809</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715968191809</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
+  </component>
+</project>
