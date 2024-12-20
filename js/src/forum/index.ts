@@ -14,7 +14,7 @@ app.initializers.add('flarum-ext-exchange', () => {
   };
 
   extend(UserPage.prototype, 'navItems', function (items) {
-    if (app.session.user) {
+    if (app.session.user && app.forum.attribute('canExchange')===true) {
       if (app.session.user.id() == this.user.id() || !app.session.user.attribute('canQueryExchange') ) {
         items.add('userExchangeHistory', LinkButton.component({
           href: app.route('userExchangeHistory', {

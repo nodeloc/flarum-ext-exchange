@@ -5,14 +5,23 @@ nodeloc-exchange:
       api_token: Api Token
       exchange_rate: Rate
       query-others-history: View Others' Records
+      blockchain_api_url: Blockchain API
+      blockchain_token: Blockchain Token
+      blockchain_min: Minimum
   forum:
     nav: Exchange
-    title: mExchange
+    title: Exchange
     list-empty: record was not found
     input_help: Please input the credits you want
     exchange_rate: NL Credits {exchange_rate} :1，meaned {exchange_rate} NL exchange 1 credits
     money-list-load-more: Read more
     create_exchange: Exchange
+    withdraw: Withdraw
+    withdraw_address: Withdraw Address
+    withdraw_amount: Withdraw Amount
+    deposit: Deposit
     record:
+      date: Date
+      type: Type
       money-out: Cost
-      money-in: Credits
+      tx-link: Transaction

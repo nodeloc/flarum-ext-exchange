@@ -13,7 +13,8 @@ class UserExchangeHistory extends AbstractModel
 
     public $fillable = [
         'money',
-        'credits',
+        'type',
+        'tx_hash',
         'user_id',
 
     ];

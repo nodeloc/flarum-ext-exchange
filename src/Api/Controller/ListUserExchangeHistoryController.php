@@ -5,7 +5,7 @@ namespace Nodeloc\Exchange\Api\Controller;
 use Flarum\Api\Controller\AbstractListController;
 use Flarum\User\UserRepository;
 use Nodeloc\Exchange\Api\Serializer\ExchangeHistorySerializer;
-use Nodeloc\Exchange\model\UserExchangeHistory;
+use Nodeloc\Exchange\Model\UserExchangeHistory;
 use Psr\Http\Message\ServerRequestInterface;
 use Illuminate\Support\Arr;
 use Tobscure\JsonApi\Document;

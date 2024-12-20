@@ -5,21 +5,22 @@ import username from "flarum/helpers/username";
 
 export default class ExchangeListItem extends Component {
   view() {
-    const {userExchangeHistory} = this.attrs;
+    const { userExchangeHistory } = this.attrs;
     const created_at = userExchangeHistory.created_at();
     const money = userExchangeHistory.money();
-    const credits = userExchangeHistory.credits();
-
+    const type = userExchangeHistory.type();
+    const tx_hash = userExchangeHistory.tx_hash();
     return (
-      <div className="transferHistoryContainer">
-        <div style="padding-top: 5px;">
-          <b>{created_at}</b>&nbsp;|&nbsp;
-          <b>{app.translator.trans('nodeloc-exchange.forum.record.money-out')}: </b>
-          {money}&nbsp;|&nbsp;
-          <b>{app.translator.trans('nodeloc-exchange.forum.record.money-in')}: </b>
-          {credits}
-        </div>
-      </div>
+      <tr>
+        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{created_at}</td>
+        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{type === 0 ? "能量转积分" : "能量提现"}</td>
+        <td style="padding: 8px; border-bottom: 1px solid #ddd;">{money}</td>
+        <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+          <a href={`https://www.oklink.com/zh-hans/polygon/tx/${tx_hash}`} target="_blank">
+            {tx_hash}
+          </a>
+        </td>
+      </tr>
     );
   }
 }

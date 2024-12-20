@@ -182,13 +182,13 @@ class ExchangeRepository
         $money = $actor->getAttribute('money');
         $this->checkBuyMoney($money, $credits);
         // 发送远程请求
-        $responseData = $this->requestExchange($credits);
+        //$responseData = $this->requestExchange($credits);
         // 提取success和message字段
-        $success = $responseData['success'] ?? false;
-        $message = $responseData['message'] ?? '';
+        //$success = $responseData['success'] ?? false;
+        //$message = $responseData['message'] ?? '';
 
         // 进行下一步操作，例如根据success和message做相应处理
-        if ($success) {
+        //if ($success) {
             // 扣减金额
             $actor->money -= $this->exchange_rate * $credits;
             $source = 'EXCHANGE';
@@ -196,17 +196,16 @@ class ExchangeRepository
 
             $this->events->dispatch(new MoneyHistoryEvent($actor, -$this->exchange_rate * $credits, $source, $sourceDesc));
             $actor->save();
-            // 创建邀请码
             $record = UserExchangeHistory::create([
                 'user_id' => $actor->id,
                 'money' => $this->exchange_rate * $credits,
-                'credits' => $credits,
+                'type' => 0,
             ]);
 
             return $record;
-        } else {
-            throw new \RuntimeException($message);
-        }
+        //} else {
+        //    throw new \RuntimeException($message);
+        //}
 
 
     }

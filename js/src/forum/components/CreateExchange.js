@@ -2,12 +2,14 @@ import app from 'flarum/forum/app';
 import Modal from 'flarum/common/components/Modal';
 import Button from 'flarum/common/components/Button';
 import Stream from 'flarum/common/utils/Stream';
+import Alert from 'flarum/common/components/Alert';
 
 export default class CreateExchange extends Modal {
   constructor() {
     super();
     this.exchange_rate = app.forum.attribute('exchange_rate');
     this.credits = Stream('0');
+    this.loading = false;
   }
 
   className() {
@@ -39,15 +41,15 @@ export default class CreateExchange extends Modal {
         );
         return;
       }
-
-      // Clear email and message
-      this.credits('0');
+      app.alerts.show(Alert, { type: 'success' }, "能量转换成功!");
       // Close the purchase box
       this.hide();
-      m.redraw();
     });
   }
-
+  onhide() {
+    super.onhide();
+    m.redraw();
+  }
   content() {
     return (
       <div className="container buy-store-layer">
