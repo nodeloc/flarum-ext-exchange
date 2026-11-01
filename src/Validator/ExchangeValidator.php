@@ -11,6 +11,6 @@ class ExchangeValidator extends AbstractValidator
      */
     protected $rules = [
         // See https://laravel.com/docs/8.x/validation#available-validation-rules for more information.
-        'credits' => 'required',
+        'credits' => 'required|integer|min:1',
     ];
 }

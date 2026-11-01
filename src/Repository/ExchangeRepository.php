@@ -9,6 +9,7 @@ use Flarum\User\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Support\Facades\DB;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Support\Facades\Http;
 use Nodeloc\Exchange\Model\UserExchangeHistory;
@@ -203,37 +204,36 @@ class ExchangeRepository
         $this->email = $actor->getAttribute('email');
         $this->api_url = $this->settings->get('nodeloc-exchange.api_url');
         $this->api_token = $this->settings->get('nodeloc-exchange.api_token');
-        $credits = $data['credits'];
-        // 检查用户余额是否符合要求
-        $money = $actor->getAttribute('money');
-        $this->checkBuyMoney($money, $credits);
-        // 发送远程请求
-        $responseData = $this->requestExchange($credits);
-        // 提取success和message字段
-        $success = $responseData['success'] ?? false;
-        $message = $responseData['message'] ?? '';
+        $credits = (int) $data['credits'];
 
-        // 进行下一步操作，例如根据success和message做相应处理
-        if ($success) {
+        // 锁住用户行再读余额：否则并发请求会同时通过 checkBuyMoney，
+        // 每一笔都换到积分，余额却只扣一次。
+        return DB::transaction(function () use ($actor, $credits) {
+            $locked = User::query()->lockForUpdate()->findOrFail($actor->id);
+            $this->checkBuyMoney((int) $locked->money, $credits);
+
+            // 发送远程请求
+            $responseData = $this->requestExchange($credits);
+            $success = $responseData['success'] ?? false;
+            $message = $responseData['message'] ?? '';
+
+            if (!$success) {
+                throw new \RuntimeException($message);
+            }
+
             // 扣减金额
-            $actor->money -= $this->exchange_rate * $credits;
+            $locked->money -= $this->exchange_rate * $credits;
             $source = 'EXCHANGE';
             $sourceDesc = '能量转换为积分';
 
-            $this->events->dispatch(new MoneyHistoryEvent($actor, -$this->exchange_rate * $credits, $source, $sourceDesc));
-            $actor->save();
-            // 创建邀请码
-            $record = UserExchangeHistory::create([
-                'user_id' => $actor->id,
+            $this->events->dispatch(new MoneyHistoryEvent($locked, -$this->exchange_rate * $credits, $source, $sourceDesc));
+            $locked->save();
+
+            return UserExchangeHistory::create([
+                'user_id' => $locked->id,
                 'money' => $this->exchange_rate * $credits,
                 'credits' => $credits,
             ]);
-
-            return $record;
-        } else {
-            throw new \RuntimeException($message);
-        }
-
-
+        });
     }
 }

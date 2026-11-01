@@ -9,6 +9,7 @@ use Flarum\User\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Support\Facades\DB;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Support\Facades\Http;
 use Nodeloc\Exchange\Model\UserExchangeHistory;
@@ -154,7 +155,6 @@ class WithDrawRepository
             CURLOPT_URL => $fullUrl,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER => $headers,
-            CURLOPT_SSL_VERIFYPEER => false,
         ]);
 
         // 执行请求并获取响应
@@ -199,23 +199,26 @@ class WithDrawRepository
     {
         $this->validator->assertValid($data);
         $withdraw_address = $data['withdraw_address'];
-        $credits = $data['credits'];
-        // 检查用户余额是否符合要求
-        $money = $actor->getAttribute('money');
+        $credits = (int) $data['credits'];
 
-        $this->checkBuyMoney($money,$credits);
-        $tx_hash = $this->requestWithDraw($withdraw_address, $credits);
-        $source = 'WITHDRAW';
-        $sourceDesc = '能量提现';
+        // 与充值相同：锁住用户行，避免并发提现重复花掉同一笔余额。
+        return DB::transaction(function () use ($actor, $withdraw_address, $credits) {
+            $locked = User::query()->lockForUpdate()->findOrFail($actor->id);
+            $this->checkBuyMoney((int) $locked->money, $credits);
 
-        $this->events->dispatch(new MoneyHistoryEvent($actor, -$credits, $source, $sourceDesc));
-        $actor->save();
-        $record = UserExchangeHistory::create([
-            'user_id' => $actor->id,
-            'money' => $credits,
-            'type' => 1,
-            'tx_hash' => $tx_hash,
-        ]);
-        return $record;
+            $tx_hash = $this->requestWithDraw($withdraw_address, $credits);
+            $source = 'WITHDRAW';
+            $sourceDesc = '能量提现';
+
+            $this->events->dispatch(new MoneyHistoryEvent($locked, -$credits, $source, $sourceDesc));
+            $locked->save();
+
+            return UserExchangeHistory::create([
+                'user_id' => $locked->id,
+                'money' => $credits,
+                'type' => 1,
+                'tx_hash' => $tx_hash,
+            ]);
+        });
     }
 }
